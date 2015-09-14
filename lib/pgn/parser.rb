@@ -100,6 +100,7 @@ module PGN
         (
           [[:print:]&&[^\\\}]] |   # printing characters except closing brace and backslash
           \n                   |
+          \r                   |
           \\\\                 |   # escaped backslashes
           \\\}|\\\}            |   # escaped braces
           \n                       # newlines
