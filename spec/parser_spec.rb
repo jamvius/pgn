@@ -4,11 +4,11 @@ describe PGN do
   describe "parsing a file" do
     it "should return a list of games" do
       games = PGN.parse(File.read("./examples/immortal_game.pgn"))
-      games.length.should == 1
+      expect(games.length).to eq(1)
       game = games.first
-      game.result.should == "1-0"
-      game.tags["White"].should == "Adolf Anderssen"
-      game.moves.last.should == "Be7#"
+      expect(game.result).to eq("1-0")
+      expect(game.tags["White"]).to eq("Adolf Anderssen")
+      expect(game.moves.last).to eq("Be7#")
     end
   end
 
@@ -17,9 +17,9 @@ describe PGN do
       it "should return a list of games" do
         games = PGN.parse(File.read("./spec/pgn_files/alternate_castling.pgn"))
         game = games.first
-        game.tags["White"].should == "Somebody"
-        game.result.should == "*"
-        game.moves.last.should == "O-O-O"
+        expect(game.tags["White"]).to eq("Somebody")
+        expect(game.result).to eq("*")
+        expect(game.moves.last).to eq("O-O-O")
       end
     end
   end
@@ -29,9 +29,9 @@ describe PGN do
       it "should return a list of games" do
         games = PGN.parse(File.read("./spec/pgn_files/annotations.pgn"))
         games.each do |game|
-          game.tags["White"].should == "Fool"
-          game.result.should == "0-1"
-          game.moves.last.should == "Qh4#"
+          expect(game.tags["White"]).to eq("Fool")
+          expect(game.result).to eq("0-1")
+          expect(game.moves.last).to eq("Qh4#")
         end
       end
     end
@@ -40,17 +40,17 @@ describe PGN do
       it "should work with comments" do
         games = PGN.parse(File.read("./spec/pgn_files/comments.pgn"))
         game = games.first
-        game.tags["White"].should == "Scholar"
-        game.result.should == "1-0"
-        game.moves.last.should == "Qxf7#"
+        expect(game.tags["White"]).to eq("Scholar")
+        expect(game.result).to eq("1-0")
+        expect(game.moves.last).to eq("Qxf7#")
       end
 
       it "should work with multiline comments" do
         games = PGN.parse(File.read("./spec/pgn_files/multiline_comments.pgn"))
         game = games.first
-        game.tags["White"].should == "Scholar"
-        game.result.should == "1-0"
-        game.moves.last.should == "Qxf7#"
+        expect(game.tags["White"]).to eq("Scholar")
+        expect(game.result).to eq("1-0")
+        expect(game.moves.last).to eq("Qxf7#")
       end
     end
 
@@ -58,9 +58,9 @@ describe PGN do
       it "should return a list of games" do
         games = PGN.parse(File.read("./spec/pgn_files/variations.pgn"))
         game = games.first
-        game.tags["Black"].should == "Petrov"
-        game.result.should == "*"
-        game.moves.last.should == "Nf6"
+        expect(game.tags["Black"]).to eq("Petrov")
+        expect(game.result).to eq("*")
+        expect(game.moves.last).to eq("Nf6")
       end
     end
     
@@ -68,16 +68,16 @@ describe PGN do
       it "should return a list of games" do
         games = PGN.parse(File.read("./spec/pgn_files/test.pgn"))
         game = games.first
-        game.tags["Black"].should == "Gelfand, Boris"
-        game.result.should == "1-0"
-        game.moves[13].should == "Nfd7"
-        game.moves[34].should == "f3"
-        game.moves[35].annotation.should == "$6"
-        game.moves[35].comment.should == "{Gelfand\ndecide tomar medidas.}"
-        game.moves[35].variations.size.should == 1
+        expect(game.tags["Black"]).to eq("Gelfand, Boris")
+        expect(game.result).to eq("1-0")
+        expect(game.moves[13]).to eq("Nfd7")
+        expect(game.moves[34]).to eq("f3")
+        expect(game.moves[35].annotation).to eq("$6")
+        expect(game.moves[35].comment).to eq("{Gelfand\ndecide tomar medidas.}")
+        expect(game.moves[35].variations.size).to eq(1)
         variation = game.moves[35].variations[0]
-        variation.size.should == 2
-        variation[0].should == "Nxf3"
+        expect(variation.size).to eq(2)
+        expect(variation[0]).to eq("Nxf3")
       end
     end
   end

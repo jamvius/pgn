@@ -6,11 +6,11 @@ require 'pgn/version'
 Gem::Specification.new do |spec|
   spec.name          = "pgn"
   spec.version       = PGN::VERSION
-  spec.authors       = ["Stacey Touset"]
-  spec.email         = ["stacey@touset.org"]
+  spec.authors       = ["jamvius"]
+  spec.email         = ["jamvius@gmail.com"]
   spec.description   = %q{A PGN parser and FEN generator for Ruby}
   spec.summary       = %q{A PGN parser for Ruby}
-  spec.homepage      = "https://github.com/capicue/pgn"
+  spec.homepage      = "https://github.com/jamvius/pgn"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "whittle"
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 end
